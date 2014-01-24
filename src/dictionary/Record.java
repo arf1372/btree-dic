@@ -3,44 +3,50 @@
  */
 package dictionary;
 
-import java.util.Collection;
 import java.util.LinkedList;
 
 import ds.Pair;
 
 public class Record extends Pair<String, LinkedList<String>> {
 
-	public Record(String key) {
-		this(key, null);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3982170224960063974L;
+
+	public Record(final String key) {
+		this(key, (String[]) null);
 	}
 
-	public Record(String key, String... datas) {
+	public Record(final String key, final String... datas) {
 		super(key, new LinkedList<String>());
 		if (datas != null)
-			for (String str : data)
-				this.data.add(str);
+			for (final String str : datas) {
+				System.err.println(str);
+				this.data.add(new String(str));
+			}
 	}
 
-	public String getWord() {
-		return this.key;
+	public void addMeaning(final String meaning) {
+		this.data.add(meaning);
 	}
 
 	public String[] getMeanings() {
 		return this.data.toArray(new String[0]);
 	}
 
-	public void setWord(String word) {
-		this.key = word;
+	public String getWord() {
+		return this.key;
 	}
 
-	public void setMeaning(String[] meanings) {
+	public void setMeaning(final String[] meanings) {
 		this.data.clear();
-		for (String str : meanings)
+		for (final String str : meanings)
 			this.data.add(str);
 	}
 
-	public void addMeaning(String meaning) {
-		this.data.add(meaning);
+	public void setWord(final String word) {
+		this.key = word;
 	}
 
 }
