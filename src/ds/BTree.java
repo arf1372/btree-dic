@@ -26,7 +26,9 @@ public class BTree<T extends Comparable<? super T>> implements Serializable {
 		this.root = new BTreeNode<T>(n);
 	}
 
-	public void add(final T data) {
+	public void add(final T data) throws ItemAlredyExistExeption {
+		if (this.find(data) != null)
+			throw new ItemAlredyExistExeption();
 		final BTreeNode<T> curr = this.findNode(data);
 		curr.add(data);
 		this.restructure(curr);

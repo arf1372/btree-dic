@@ -3,6 +3,7 @@
  */
 package dictionary;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 import ds.Pair;
@@ -19,12 +20,8 @@ public class Record extends Pair<String, LinkedList<String>> {
 	}
 
 	public Record(final String key, final String... datas) {
-		super(key, new LinkedList<String>());
-		if (datas != null)
-			for (final String str : datas) {
-				System.err.println(str);
-				this.data.add(new String(str));
-			}
+		super(key, ((datas == null) ? (new LinkedList<String>())
+				: (new LinkedList<String>(Arrays.asList(datas)))));
 	}
 
 	public void addMeaning(final String meaning) {

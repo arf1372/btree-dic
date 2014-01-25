@@ -11,11 +11,11 @@ import java.util.ArrayList;
  * 
  */
 final class BTreeNode<T extends Comparable<? super T>> implements Serializable {
+	protected static int degree;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -9069508549382256556L;
-	protected static int degree;
 	protected ArrayList<BTreeNode<T>> childs = null;
 	protected ArrayList<T> data = null;
 	protected BTreeNode<T> parent = null;
