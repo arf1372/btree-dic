@@ -2,6 +2,9 @@
  * 
  */
 
+import gui.Graphics;
+
+import java.awt.EventQueue;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +29,18 @@ public class Main {
 	 */
 	public static void main(final String[] args) throws Exception {
 		if (args.length == 0)
-			System.out.println("usage: java Main parse|[word]");
+			// System.out.println("usage: java Main parse|[word]");
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						Graphics frame = new Graphics();
+						frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace(System.err);
+						System.exit(-1);
+					}
+				}
+			});
 		if (args.length == 1)
 			if (args[0].equalsIgnoreCase("--parse"))
 				try {
